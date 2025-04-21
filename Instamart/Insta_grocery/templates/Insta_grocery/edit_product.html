@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #121212;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2ecc71;
+            margin-bottom: 30px;
+        }
+
+        /* Form Styling */
+        .form-section {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-section input,
+        .form-section textarea,
+        .form-section select {
+            padding: 12px 15px;
+            background: #2a2a2a;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-section button {
+            padding: 12px;
+            background: #27ae60;
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .form-section button:hover {
+            background: #219150;
+        }
+
+        /* Adjustments for responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .form-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Product: {{ product.name }}</h1>
+        <div class="form-section">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}  <!-- Rendering the form fields -->
+                <button type="submit">Update Product</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
