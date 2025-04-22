@@ -209,6 +209,14 @@
                 font-size: 2rem;
             }
         }
+
+        /* Auth Section Style */
+        .auth-section {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
@@ -219,6 +227,20 @@
         <div class="tabs">
             <button class="tab-button active" onclick="showTab('form')">Add Product</button>
             <button class="tab-button" onclick="showTab('products')">View Products</button>
+        </div>
+
+        <!-- 🧠 Authentication Section -->
+        <div class="auth-section">
+            {% if user.is_authenticated %}
+                <span style="margin-right: 15px;">Welcome, {{ user.username }}!</span>
+                <a href="{% url 'logout' %}">
+                    <button class="edit-btn" style="background-color: #e67e22;">Logout</button>
+                </a>
+            {% else %}
+                <a href="{% url 'signin' %}">
+                    <button class="edit-btn" style="background-color: #2ecc71;">Sign In</button>
+                </a>
+            {% endif %}
         </div>
 
         <!-- ✏️ Product Form -->

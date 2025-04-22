@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Product
 from .forms import ProductForm
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 # Home view to display all products and handle product addition
 def home(request):
@@ -26,3 +28,9 @@ def delete_product(request, pk):
     product = get_object_or_404(Product, pk=pk)
     product.delete()
     return redirect('home')  # Redirect to home after successful deletion
+
+@login_required
+def Home(request):
+    # Replace with your actual product logic
+    products = []  # or fetch from DB
+    return render(request, 'Register/home.html', {'products': products})
